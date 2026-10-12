@@ -3,7 +3,10 @@ from django.contrib import messages
 from django.db.models import Avg
 from .models import Branch, BookingOrder, CustomerReview
 from .forms import BookingOrderForm, CustomerReviewForm, STANDARD_ITEMS
+from django.shortcuts import render
 
+def home(request):
+    return render(request, 'packers/index.html')
 
 def index(request):
     """
