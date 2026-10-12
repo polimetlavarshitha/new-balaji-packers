@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sitemaps',  # <--- Add this line here
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'packers.apps.PackersConfig',
