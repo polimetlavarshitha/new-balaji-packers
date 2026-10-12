@@ -1,193 +1,33 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="2QsXr-LUpdfEGzuRPJ1NeIJckktSRsGmZRF6UfeRQzc">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}New Balaji Packers and Movers | Safe Move ... Happy Home{% endblock %}</title>
-    <meta name="description" content="New Balaji Packers and Movers. Head Office: Vuyyuru. Branches: Vijayawada & Machilipatnam. Household shifting, office relocation, car transportation. Proprietor: Mr. Kumar.">
-    
+    <meta name="description"
+        content="New Balaji Packers and Movers. Head Office: Vuyyuru. Branches: Vijayawada & Machilipatnam.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Bootstrap 5.3.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <!-- Custom Theme CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-
-    <!-- Header & Navigation Bar -->
-    <header class="navbar navbar-expand-lg navbar-dark navbar-balaji sticky-top py-2">
-        <div class="container">
-            <!-- Brand Logo / Name -->
-            <a class="navbar-brand text-decoration-none d-flex flex-column" href="{% url 'index' %}" id="navBrandLink">
-                <span class="brand-main">{{ BUSINESS_NAME }}</span>
-                <span class="brand-sub">Safe Move ... Happy Home</span>
-            </a>
-
-            <!-- Mobile Toggler -->
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#balajiNav" aria-controls="balajiNav" aria-expanded="false" aria-label="Toggle navigation" id="navToggleBtn">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navigation Links -->
-            <div class="collapse navbar-collapse justify-content-end" id="balajiNav">
-                <ul class="navbar-nav align-items-lg-center gap-1 my-3 my-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-balaji" href="{% url 'index' %}" id="navHomeLink">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-balaji" href="{% url 'about' %}" id="navAboutLink">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-balaji" href="{% url 'contact' %}" id="navContactLink">Contact Us</a>
-                    </li>
-                    <li class="nav-item d-none d-xl-block">
-                        <a class="nav-link nav-link-balaji text-warning" href="tel:{{ PRIMARY_PHONE }}" id="navCallLink">
-                            <i class="bi bi-telephone-fill me-1"></i> {{ PRIMARY_PHONE }}
-                        </a>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="btn btn-amber" href="{% url 'quote' %}" id="navBookBtn">
-                            <i class="bi bi-box-seam-fill"></i> Start Booking Order
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-    <!-- Top Announcement Strip -->
-    <div class="bg-dark text-white py-1 border-bottom border-secondary small">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center">
-            <div>
-                <span class="badge bg-warning text-dark me-2 font-weight-bold">📍 Head Office: Vuyyuru</span>
-                <span class="d-none d-md-inline text-light">Other Branches: Vijayawada &amp; Machilipatnam</span>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <span class="d-none d-sm-inline">Proprietor: <strong class="text-warning">{{ PROPRIETOR }}</strong></span>
-                <a href="tel:{{ PRIMARY_PHONE }}" class="text-white text-decoration-none">
-                    <i class="bi bi-headset me-1 text-warning"></i> 24/7 Support: {{ PRIMARY_PHONE }}
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Django Messages Framework Alerts -->
-    {% if messages %}
-    <div class="container mt-3">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show shadow-sm" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- Main Content Area -->
-    <main class="flex-grow-1">
-        {% block content %}{% endblock %}
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer-balaji pt-5 pb-3">
-        <div class="container">
-            <div class="row g-4 mb-4">
-                <!-- Col 1: Business Overview -->
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="text-white fw-bold brand-title mb-2">{{ BUSINESS_NAME }}</h5>
-                    <p class="text-warning small fw-bold mb-3">{{ TAGLINE }}</p>
-                    <p class="small text-secondary mb-3">
-                        Premier packing and moving service provider across Andhra Pradesh &amp; Pan-India. Dedicated to zero-damage shifting, reliable fleet, and trusted customer service.
-                    </p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-secondary">✅ GST Bills Available</span>
-                        <span class="badge bg-secondary">✅ Bank Approval Bills</span>
-                        <span class="badge bg-secondary">✅ 24/7 Service</span>
-                    </div>
-                </div>
-
-                <!-- Col 2: Branches -->
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="text-white fw-bold mb-3">Our Branch Offices</h5>
-                    <div class="small text-secondary mb-3">
-                        <div class="mb-2">
-                            <span class="text-warning fw-bold d-block">⭐ Vuyyuru (Head Office / Main Branch):</span>
-                            Thotlavallaru Road, Sai Baba Temple Back Side, Vuyyuru<br>
-                            <a href="tel:9014331173" class="footer-link fw-bold text-light">📞 9014331173</a>
-                        </div>
-                        <div class="mb-2">
-                            <span class="text-warning fw-bold d-block">📍 Vijayawada Branch:</span>
-                            Opp. Nagarjuna Hospital, Kanuru, Auto Nagar, Vijayawada<br>
-                            <a href="tel:9803558899" class="footer-link fw-bold text-light">📞 9803558899</a>
-                        </div>
-                        <div>
-                            <span class="text-warning fw-bold d-block">📍 Machilipatnam Branch:</span>
-                            Housing Board Colony, Bypass Road, Machilipatnam<br>
-                            <a href="tel:8099333910" class="footer-link fw-bold text-light">📞 8099333910</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Col 3: Quick Contact & Proprietor -->
-                <div class="col-lg-4 col-md-12">
-                    <h5 class="text-white fw-bold mb-3">Contact &amp; Bookings</h5>
-                    <p class="small text-secondary mb-2">
-                        Proprietor: <strong class="text-white">{{ PROPRIETOR }}</strong>
-                    </p>
-                    <p class="small text-secondary mb-3">
-                        Official Phones:<br>
-                        <strong class="text-warning fs-6">9014331173 | 9803558899 | 8099333910</strong>
-                    </p>
-                    <div class="d-grid gap-2">
-                        <a href="{% url 'quote' %}" class="btn btn-amber btn-sm">
-                            <i class="bi bi-calculator"></i> Get Free Quote / Book Order
-                        </a>
-                        <button onclick="shareWebsite()" class="btn btn-outline-light btn-sm">
-                            <i class="bi bi-share-fill me-1"></i> Share Website
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="border-secondary opacity-25">
-
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center small text-secondary">
-                <p class="mb-0">
-                    © {% now "Y" %} {{ BUSINESS_NAME }}. Serving Vuyyuru, Vijayawada, Machilipatnam &amp; All India.
-                </p>
-                <div class="mt-2 mt-sm-0">
-                    <a href="{% url 'admin:index' %}" class="footer-link me-3"><i class="bi bi-lock-fill"></i> Staff Admin</a>
-                    <span>Payment Modes: PhonePe | Paytm | Google Pay</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Action Button -->
-    <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hello%20New%20Balaji%20Packers%20and%20Movers,%20I%20want%20to%20inquire%20about%20shifting." 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="whatsapp-float" 
-       title="Chat on WhatsApp"
-       id="floatingWhatsAppBtn">
-        <i class="bi bi-whatsapp"></i>
-    </a>
-
-    <!-- Bootstrap 5.3.3 Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <!-- Custom Frontend JavaScript -->
-    <script src="{% static 'js/main.js' %}"></script>
-    
-    {% block extra_scripts %}{% endblock %}
-</body>
-</html>
