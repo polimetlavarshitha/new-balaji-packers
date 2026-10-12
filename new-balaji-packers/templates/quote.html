@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Start Booking Your Shifting Order | New Balaji Packers and Movers{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container py-lg-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Header Banner -->
+                <div class="mb-4">
+                    <span class="badge bg-warning text-dark fw-bold mb-2">SCHEDULE YOUR SHIFTING</span>
+                    <h1 class="display-6 fw-bold brand-title text-dark">Book Shifting Order Request</h1>
+                    <p class="text-muted">Fill out the details below. Our proprietor Mr. Kumar or our local branch team will call you back immediately with confirmation.</p>
+                </div>
+
+                <!-- Form Card -->
+                <div class="form-card p-4 p-md-5 bg-white shadow-sm rounded-4">
+                    <form method="POST" action="{% url 'quote' %}" id="bookingOrderForm">
+                        {% csrf_token %}
+
+                        <!-- Non-field / Global Errors -->
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                            <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <!-- Contact Details Row -->
+                        <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">1. Customer Information</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_name">Full Name <span class="text-danger">*</span></label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                <div class="text-danger small mt-1">{{ form.name.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_phone">Phone Number <span class="text-danger">*</span></label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                <div class="text-danger small mt-1">{{ form.phone.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_email">Email Address (Optional)</label>
+                                {{ form.email }}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_move_date">Preferred Shifting Date</label>
+                                {{ form.move_date }}
+                            </div>
+                        </div>
+
+                        <!-- Route Details Row -->
+                        <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">2. Shifting Route</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_pickup_city">Pickup Location (From) <span class="text-danger">*</span></label>
+                                {{ form.pickup_city }}
+                                {% if form.pickup_city.errors %}
+                                <div class="text-danger small mt-1">{{ form.pickup_city.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="id_drop_city">Drop Location (To) <span class="text-danger">*</span></label>
+                                {{ form.drop_city }}
+                                {% if form.drop_city.errors %}
+                                <div class="text-danger small mt-1">{{ form.drop_city.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Articles to Move & Custom Items -->
+                        <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">3. Articles &amp; Custom Items</h5>
+                        
+                        <!-- Standard Checkboxes -->
+                        <label class="form-label d-block mb-2">Standard Item Categories (Select all that apply):</label>
+                        <div class="row g-2 mb-3">
+                            {% for item_val, item_label in standard_items %}
+                            <div class="col-md-6">
+                                <label class="item-check-card">
+                                    <input type="checkbox" name="items_checkbox" value="{{ item_val }}" class="item-checkbox-input form-check-input mt-0"
+                                    {% if item_val in form.selected_items.value %}checked{% endif %}>
+                                    <span class="small">{{ item_label }}</span>
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Hidden selected items input synced via JS -->
+                        {{ form.selected_items }}
+
+                        <!-- Manual Custom Items Input Field -->
+                        <div class="mb-4">
+                            <label class="form-label" for="id_custom_items">
+                                <i class="bi bi-pencil-square text-warning me-1"></i> Any Specific Items? (Type manually)
+                            </label>
+                            {{ form.custom_items }}
+                            <small class="text-muted">Type specific items like Fridge, Washing Machine, 2 ACs, Bike, Sofa, etc.</small>
+                            {% if form.custom_items.errors %}
+                            <div class="text-danger small mt-1">{{ form.custom_items.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Special Instructions -->
+                        <div class="mb-4">
+                            <label class="form-label" for="id_notes">Special Instructions / Floor &amp; Lift Details</label>
+                            {{ form.notes }}
+                        </div>
+
+                        <!-- Hidden estimated price field if pre-calculated -->
+                        {{ form.estimated_price }}
+                        {% if form.estimated_price.value %}
+                        <div class="alert alert-warning py-2 mb-4 d-flex align-items-center justify-content-between">
+                            <span class="small fw-bold"><i class="bi bi-tag-fill me-1"></i> Pre-calculated Estimate from Price Calculator:</span>
+                            <span class="fs-5 fw-bold text-dark">₹{{ form.estimated_price.value }}</span>
+                        </div>
+                        {% endif %}
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-amber py-3 fs-5 fw-bold shadow-sm" id="submitOrderBtn">
+                                <i class="bi bi-check2-circle me-1"></i> Submit Order Request
+                            </button>
+                            <small class="text-center text-muted mt-2">
+                                By submitting, you request a booking callback from Mr. Kumar (Proprietor). No payment is charged upfront.
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sidebar Info -->
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="d-flex flex-column gap-4">
+                    <!-- Branch Contact Assistance Card -->
+                    <div class="card bg-white border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold text-dark mb-3">Direct Phone Assistance</h5>
+                        <p class="small text-muted mb-3">Need instant booking confirmation over phone? Call our branch numbers directly:</p>
+
+                        <div class="d-flex flex-column gap-3">
+                            <div class="p-2 rounded bg-light border-start border-warning border-3">
+                                <strong class="small d-block text-dark">⭐ Vuyyuru (Head Office):</strong>
+                                <a href="tel:9014331173" class="text-decoration-none text-dark fw-bold small">
+                                    📞 9014331173
+                                </a>
+                            </div>
+
+                            <div class="p-2 rounded bg-light border-start border-secondary border-3">
+                                <strong class="small d-block text-dark">📍 Vijayawada Branch:</strong>
+                                <a href="tel:9803558899" class="text-decoration-none text-dark fw-bold small">
+                                    📞 9803558899
+                                </a>
+                            </div>
+
+                            <div class="p-2 rounded bg-light border-start border-secondary border-3">
+                                <strong class="small d-block text-dark">📍 Machilipatnam Branch:</strong>
+                                <a href="tel:8099333910" class="text-decoration-none text-dark fw-bold small">
+                                    📞 8099333910
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 pt-3 border-top text-center">
+                            <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hello%20Mr.%20Kumar,%20I%20want%20to%20book%20a%20shift." target="_blank" class="btn btn-whatsapp btn-sm w-100">
+                                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Trust Card -->
+                    <div class="card bg-dark text-white border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold text-warning mb-2">Why Move With Us?</h5>
+                        <ul class="list-unstyled small text-light d-flex flex-column gap-2 mb-0">
+                            <li><i class="bi bi-shield-check text-warning me-2"></i> Zero Damage Guarantee with multi-layer wrap</li>
+                            <li><i class="bi bi-file-earmark-text text-warning me-2"></i> Authorized GST invoices provided</li>
+                            <li><i class="bi bi-bank text-warning me-2"></i> Bank approval shifting bills available</li>
+                            <li><i class="bi bi-clock-history text-warning me-2"></i> 24/7 round-the-clock service</li>
+                            <li><i class="bi bi-credit-card text-warning me-2"></i> PhonePe, Paytm, Google Pay accepted</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

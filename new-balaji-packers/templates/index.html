@@ -1,0 +1,462 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}New Balaji Packers and Movers | Vuyyuru, Vijayawada, Machilipatnam{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section py-5">
+    <div class="container py-lg-4">
+        <div class="row align-items-center g-5">
+            <!-- Left Column: Headline and CTAs -->
+            <div class="col-lg-7">
+                <!-- Main Branch Highlight Badge -->
+                <div class="mb-3">
+                    <span class="badge-head-office">
+                        <i class="bi bi-star-fill text-dark"></i> HEAD OFFICE: VUYYURU
+                    </span>
+                    <span class="badge bg-secondary ms-2">Branches: Vijayawada &amp; Machilipatnam</span>
+                </div>
+
+                <h1 class="display-5 fw-black text-white brand-title mb-3 lh-sm">
+                    Safe Relocation Between <span class="text-warning">Vuyyuru</span>, <span class="text-warning">Vijayawada</span> &amp; <span class="text-warning">Machilipatnam</span>
+                </h1>
+
+                <p class="fs-5 text-warning fw-bold mb-3">
+                    <i class="bi bi-shield-check me-1"></i> {{ TAGLINE }}
+                </p>
+
+                <p class="lead text-light mb-4 opacity-90">
+                    Trusted packers and movers led by <strong>{{ PROPRIETOR }}</strong>. Providing expert household shifting, office relocation, vehicle carrier, and local transport with zero-damage guarantee.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'quote' %}" class="btn btn-amber btn-lg px-4" id="heroBookBtn">
+                        <i class="bi bi-box-seam-fill"></i> Start Booking Your Order
+                    </a>
+                    <a href="tel:{{ PRIMARY_PHONE }}" class="btn btn-outline-light btn-lg px-4" id="heroCallBtn">
+                        <i class="bi bi-telephone-fill text-warning me-1"></i> Call {{ PRIMARY_PHONE }}
+                    </a>
+                    <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hello%20Mr.%20Kumar,%20I%20want%20to%20inquire%20about%20shifting%20services." 
+                       target="_blank" 
+                       class="btn btn-whatsapp btn-lg px-4" id="heroWhatsAppBtn">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="mt-4 pt-3 border-top border-secondary border-opacity-50 d-flex flex-wrap gap-3 text-light small">
+                    <span><i class="bi bi-check-circle-fill text-warning"></i> GST Bills Available</span>
+                    <span><i class="bi bi-check-circle-fill text-warning"></i> Bank Approval Bills</span>
+                    <span><i class="bi bi-check-circle-fill text-warning"></i> 24/7 Available</span>
+                </div>
+            </div>
+
+            <!-- Right Column: Quick Branch Highlights Card -->
+            <div class="col-lg-5">
+                <div class="card bg-white shadow-lg border-0 rounded-4 p-4 text-dark">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0 text-dark">Our Branch Network</h4>
+                        <span class="badge bg-warning text-dark fw-bold">Official Centers</span>
+                    </div>
+                    <p class="small text-muted mb-3">Proprietor: <strong>{{ PROPRIETOR }}</strong> | All India Service</p>
+
+                    <div class="d-flex flex-column gap-3">
+                        <!-- Vuyyuru (Head Office) -->
+                        <div class="p-3 rounded-3 border-start border-warning border-4 bg-light shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-dark">📍 Vuyyuru</h6>
+                                <span class="badge bg-warning text-dark fw-bold small">MAIN HEAD OFFICE</span>
+                            </div>
+                            <p class="small text-muted mb-1">Thotlavallaru Road, Sai Baba Temple Back Side, Vuyyuru</p>
+                            <a href="tel:9014331173" class="fw-bold text-decoration-none text-dark small">
+                                <i class="bi bi-telephone-fill text-warning"></i> 9014331173
+                            </a>
+                        </div>
+
+                        <!-- Vijayawada Branch -->
+                        <div class="p-3 rounded-3 border-start border-primary border-4 bg-light shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-dark">📍 Vijayawada</h6>
+                                <span class="badge bg-secondary small">BRANCH OFFICE</span>
+                            </div>
+                            <p class="small text-muted mb-1">Opp. Nagarjuna Hospital, Kanuru, Auto Nagar, Vijayawada</p>
+                            <a href="tel:9803558899" class="fw-bold text-decoration-none text-dark small">
+                                <i class="bi bi-telephone-fill text-warning"></i> 9803558899
+                            </a>
+                        </div>
+
+                        <!-- Machilipatnam Branch -->
+                        <div class="p-3 rounded-3 border-start border-info border-4 bg-light shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-dark">📍 Machilipatnam</h6>
+                                <span class="badge bg-secondary small">BRANCH OFFICE</span>
+                            </div>
+                            <p class="small text-muted mb-1">Housing Board Colony, Bypass Road, Machilipatnam</p>
+                            <a href="tel:8099333910" class="fw-bold text-decoration-none text-dark small">
+                                <i class="bi bi-telephone-fill text-warning"></i> 8099333910
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 pt-2 text-center border-top">
+                        <a href="{% url 'quote' %}" class="btn btn-outline-dark btn-sm w-100 fw-bold">
+                            Request Free Shifting Quote →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     INTERACTIVE FEATURE 1: DYNAMIC PRICE ESTIMATOR CALCULATOR
+     ========================================================================== -->
+<section class="py-5 bg-white border-bottom" id="priceCalculatorSection">
+    <div class="container py-lg-4">
+        <div class="row align-items-center mb-4">
+            <div class="col-lg-8">
+                <span class="badge bg-warning text-dark fw-bold mb-2">⭐ INTERACTIVE TOOL</span>
+                <h2 class="display-6 fw-bold brand-title text-dark">Live Moving Price Calculator</h2>
+                <p class="text-muted mb-0">Get an instant transparent estimate for shifting between Vuyyuru, Vijayawada, Machilipatnam, and other cities.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <span class="badge bg-light text-dark border p-2">
+                    <i class="bi bi-lightning-charge-fill text-warning"></i> Instant Real-Time Calculation
+                </span>
+            </div>
+        </div>
+
+        <div class="card calc-card">
+            <div class="calc-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <div>
+                    <h5 class="fw-bold text-white mb-0"><i class="bi bi-calculator-fill text-warning me-2"></i> Customize Your Move Parameters</h5>
+                    <small class="text-secondary">Select your route, home size, and packing requirements to compute live estimates</small>
+                </div>
+                <span class="badge bg-warning text-dark fw-bold">100% Free Estimate</span>
+            </div>
+            <div class="card-body p-4 p-lg-5">
+                <form id="priceCalculatorForm">
+                    <div class="row g-4">
+                        <!-- Col 1: Form Inputs -->
+                        <div class="col-lg-7">
+                            <div class="row g-3">
+                                <!-- Pickup City -->
+                                <div class="col-md-6">
+                                    <label class="form-label" for="calc_pickup"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Pickup Location (From)</label>
+                                    <select class="form-select form-select-lg" id="calc_pickup">
+                                        <option value="Vuyyuru" selected>Vuyyuru (Head Office)</option>
+                                        <option value="Vijayawada">Vijayawada</option>
+                                        <option value="Machilipatnam">Machilipatnam</option>
+                                        <option value="Guntur">Guntur</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Other Location">Other Location</option>
+                                    </select>
+                                </div>
+
+                                <!-- Drop City -->
+                                <div class="col-md-6">
+                                    <label class="form-label" for="calc_drop"><i class="bi bi-geo-fill text-success me-1"></i> Drop Location (To)</label>
+                                    <select class="form-select form-select-lg" id="calc_drop">
+                                        <option value="Vijayawada" selected>Vijayawada</option>
+                                        <option value="Vuyyuru">Vuyyuru (Head Office)</option>
+                                        <option value="Machilipatnam">Machilipatnam</option>
+                                        <option value="Guntur">Guntur</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Other Location">Other Location</option>
+                                    </select>
+                                </div>
+
+                                <!-- Shifting Type / Size -->
+                                <div class="col-md-12">
+                                    <label class="form-label" for="calc_type"><i class="bi bi-house-door-fill text-primary me-1"></i> Move Type &amp; Home Size</label>
+                                    <select class="form-select form-select-lg" id="calc_type">
+                                        <option value="1 BHK">1 BHK Apartment / Small Home</option>
+                                        <option value="2 BHK" selected>2 BHK House / Standard Family</option>
+                                        <option value="3+ BHK">3+ BHK Large House / Villa</option>
+                                        <option value="Office">Office Furniture, IT &amp; Workstations</option>
+                                        <option value="Car Transport">Car / Four Wheeler Vehicle Transport</option>
+                                        <option value="Single Item">Single Heavy Appliance (Fridge / Washing Machine)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Packing Tier -->
+                                <div class="col-md-6">
+                                    <label class="form-label" for="calc_packing"><i class="bi bi-box-seam text-warning me-1"></i> Packing Material Tier</label>
+                                    <select class="form-select" id="calc_packing">
+                                        <option value="standard" selected>Standard Packing (Boxes, Tape, Blankets)</option>
+                                        <option value="premium">Premium 5-Layer Bubble Wrap (+₹1,200)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Floor / Lift -->
+                                <div class="col-md-6">
+                                    <label class="form-label" for="calc_floor"><i class="bi bi-building text-info me-1"></i> Floor &amp; Lift Condition</label>
+                                    <select class="form-select" id="calc_floor">
+                                        <option value="lift" selected>Lift Available / Ground Floor</option>
+                                        <option value="stairs">Stairs Only (1st-3rd Floor) (+₹600)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: Live Estimated Pricing Output -->
+                        <div class="col-lg-5">
+                            <div class="calc-result-box h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-secondary small fw-bold text-uppercase">Estimated Move Fare</span>
+                                        <span class="badge bg-warning text-dark fw-bold">Live Breakdown</span>
+                                    </div>
+
+                                    <!-- Main Price Result -->
+                                    <div class="calc-price-display my-2" id="calc_price_display">
+                                        ₹5,800 - ₹7,100
+                                    </div>
+                                    <small class="text-secondary d-block mb-3">*Includes vehicle transportation, professional packing &amp; careful loading.</small>
+
+                                    <!-- Breakdown Items -->
+                                    <div class="bg-black bg-opacity-25 rounded-3 p-3 mb-3 small">
+                                        <div class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-25">
+                                            <span class="text-light">Vehicle &amp; Fuel Base Fare:</span>
+                                            <strong class="text-warning" id="calc_freight_display">₹5,800</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-25">
+                                            <span class="text-light">Packing Boxes &amp; Wrap:</span>
+                                            <strong class="text-warning" id="calc_packing_display">₹1,400</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between py-1">
+                                            <span class="text-light">Loading &amp; Unloading Labor:</span>
+                                            <strong class="text-warning" id="calc_labor_display">₹1,400</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Book Now with this Estimate Button -->
+                                <div>
+                                    <a href="{% url 'quote' %}" class="btn btn-amber w-100 py-3 fw-bold fs-6" id="calc_book_btn">
+                                        <i class="bi bi-arrow-right-circle-fill"></i> Book Shifting With This Estimate
+                                    </a>
+                                    <div class="text-center mt-2">
+                                        <small class="text-secondary">Need custom advice? Call Mr. Kumar: <a href="tel:{{ PRIMARY_PHONE }}" class="text-warning text-decoration-none fw-bold">{{ PRIMARY_PHONE }}</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     SERVICES SECTION
+     ========================================================================== -->
+<section class="py-5 bg-light" id="servicesSection">
+    <div class="container py-lg-4">
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge bg-warning text-dark fw-bold mb-2">OUR EXPERTISE</span>
+            <h2 class="display-6 fw-bold brand-title text-dark">Services Provided By New Balaji</h2>
+            <p class="text-muted">Safe moving for homes, businesses, and vehicles with door-to-door transit.</p>
+        </div>
+
+        <div class="row g-4">
+            {% for s in SERVICES_LIST %}
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="service-icon">{{ s.icon }}</span>
+                            <span class="badge bg-warning text-dark fw-bold small">{{ s.badge }}</span>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-2">{{ s.title }}</h4>
+                        <p class="text-muted small mb-0">{{ s.desc }}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-top">
+                        <a href="{% url 'quote' %}" class="text-warning fw-bold text-decoration-none small">
+                            Book this service →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     BRANCH LOCATIONS IN-DEPTH
+     ========================================================================== -->
+<section class="py-5 bg-white" id="branchesSection">
+    <div class="container py-lg-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-warning text-dark fw-bold mb-2">OFFICIAL OFFICES</span>
+            <h2 class="display-6 fw-bold brand-title text-dark">Our Branches &amp; Service Centers</h2>
+            <p class="text-muted">Headquartered in Vuyyuru with dedicated branches in Vijayawada &amp; Machilipatnam.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            {% for b in branches %}
+            <div class="col-lg-4 col-md-6">
+                <div class="location-card p-4 h-100 d-flex flex-column justify-content-between {% if b.is_head_office %}is-main shadow{% endif %}">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4 class="fw-bold mb-0 text-dark">📍 {{ b.city }}</h4>
+                            {% if b.is_head_office %}
+                            <span class="badge bg-warning text-dark fw-bold">HEAD OFFICE</span>
+                            {% else %}
+                            <span class="badge bg-secondary small">BRANCH</span>
+                            {% endif %}
+                        </div>
+                        <p class="text-muted small mt-2 mb-3">
+                            {{ b.address }}
+                        </p>
+                    </div>
+                    <div>
+                        <hr class="my-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="tel:{{ b.phone }}" class="btn btn-outline-dark btn-sm fw-bold">
+                                <i class="bi bi-telephone-fill text-warning"></i> {{ b.phone }}
+                            </a>
+                            <a href="https://wa.me/91{{ b.phone }}?text=Inquiry%20for%20{{ b.city }}%20Branch" target="_blank" class="btn btn-sm btn-success">
+                                <i class="bi bi-whatsapp"></i> Chat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     INTERACTIVE FEATURE 2: CUSTOMER REVIEWS & LIVE STAR RATING SELECTOR
+     ========================================================================== -->
+<section class="py-5 bg-light" id="reviews">
+    <div class="container py-lg-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
+            <div>
+                <span class="badge bg-warning text-dark fw-bold mb-2">⭐ VERIFIED FEEDBACK</span>
+                <h2 class="display-6 fw-bold brand-title text-dark mb-1">Customer Ratings &amp; Reviews</h2>
+                <p class="text-muted mb-0">See what families and offices say about our shifting service.</p>
+            </div>
+            <div class="card border-warning bg-warning bg-opacity-10 p-3 rounded-3">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fs-4 text-warning">★★★★★</span>
+                    <div>
+                        <strong class="fs-5 text-dark d-block leading-none">{{ avg_rating }} / 5.0</strong>
+                        <small class="text-muted">Verified Rating ({{ review_count }} reviews)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Col 1: Customer Reviews Grid -->
+            <div class="col-lg-7">
+                <div class="row g-3">
+                    {% for r in reviews %}
+                    <div class="col-md-6">
+                        <div class="card bg-white border-0 shadow-sm rounded-3 p-3 h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-warning fs-6">
+                                    {% if r.rating == 5 %}★★★★★{% elif r.rating == 4 %}★★★★☆{% elif r.rating == 3 %}★★★☆☆{% elif r.rating == 2 %}★★☆☆☆{% else %}★☆☆☆☆{% endif %}
+                                </span>
+                                {% if r.city %}
+                                <span class="badge bg-light text-dark border small">{{ r.city }}</span>
+                                {% endif %}
+                            </div>
+                            <p class="small text-secondary fst-italic mb-3">
+                                “{{ r.review_text }}”
+                            </p>
+                            <div class="mt-auto border-top pt-2 d-flex justify-content-between align-items-center">
+                                <strong class="small text-dark">{{ r.reviewer_name }}</strong>
+                                <span class="text-muted very-small" style="font-size: 0.75rem;">Verified Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <p class="text-muted">No reviews yet. Be the first to share your experience!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Col 2: Leave a Review with LIVE STAR RATING SELECTOR -->
+            <div class="col-lg-5">
+                <div class="card bg-white shadow-sm border rounded-4 p-4">
+                    <h5 class="fw-bold text-dark mb-1">Leave a Review &amp; Star Rating</h5>
+                    <p class="small text-muted mb-3">Rate your shifting experience with New Balaji Packers and Movers.</p>
+
+                    <form action="{% url 'submit_review' %}" method="POST" id="customerReviewForm">
+                        {% csrf_token %}
+                        
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="id_reviewer_name">Your Name</label>
+                            {{ review_form.reviewer_name }}
+                        </div>
+
+                        <!-- City Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="id_review_city">Your City / Route (Optional)</label>
+                            {{ review_form.city }}
+                        </div>
+
+                        <!-- Interactive Live Star Rating Selector Widget -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">Your Rating (Click to Select)</label>
+                            <div class="star-rating-box" id="liveStarSelector" title="Click a star to rate">
+                                <i class="bi bi-star-fill star-icon text-warning" data-rating="1"></i>
+                                <i class="bi bi-star-fill star-icon text-warning" data-rating="2"></i>
+                                <i class="bi bi-star-fill star-icon text-warning" data-rating="3"></i>
+                                <i class="bi bi-star-fill star-icon text-warning" data-rating="4"></i>
+                                <i class="bi bi-star-fill star-icon text-warning" data-rating="5"></i>
+                            </div>
+                            <!-- Hidden input holding actual rating value -->
+                            {{ review_form.rating }}
+                            <!-- Dynamic text describing the active star level -->
+                            <div class="rating-caption mt-1" id="starRatingCaption">
+                                ★★★★★ (5/5) - Excellent &amp; Highly Recommended!
+                            </div>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="mb-3">
+                            <label class="form-label" for="id_review_text">Your Review Experience</label>
+                            {{ review_form.review_text }}
+                        </div>
+
+                        <button type="submit" class="btn btn-amber w-100 fw-bold py-2" id="submitReviewBtn">
+                            <i class="bi bi-send-fill me-1"></i> Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     BOTTOM CALL TO ACTION BANNER
+     ========================================================================== -->
+<section class="py-5 hero-section text-center">
+    <div class="container py-4">
+        <h2 class="display-6 fw-bold brand-title text-warning mb-2">Planning Your Next Shifting?</h2>
+        <p class="lead text-light mb-4">Get safe, fast, and licensed relocation with New Balaji Packers and Movers.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{% url 'quote' %}" class="btn btn-amber btn-lg px-4 fw-bold">
+                <i class="bi bi-box-seam-fill"></i> Start Booking Your Order
+            </a>
+            <a href="tel:{{ PRIMARY_PHONE }}" class="btn btn-outline-light btn-lg px-4 fw-bold">
+                <i class="bi bi-telephone-fill text-warning me-1"></i> Call Mr. Kumar: {{ PRIMARY_PHONE }}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

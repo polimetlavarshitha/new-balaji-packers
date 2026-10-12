@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us | New Balaji Packers and Movers{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container py-lg-4">
+        <!-- Header -->
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge bg-warning text-dark fw-bold mb-2">24/7 SUPPORT AVAILABLE</span>
+            <h1 class="display-5 fw-bold brand-title text-dark">Contact New Balaji Packers &amp; Movers</h1>
+            <p class="text-warning fw-bold fs-5 mb-1">Proprietor: {{ PROPRIETOR }}</p>
+            <p class="text-muted">Reach out to our Head Office in Vuyyuru or our branches in Vijayawada and Machilipatnam.</p>
+        </div>
+
+        <!-- 3 Branch Cards Grid -->
+        <div class="row g-4 mb-5">
+            <!-- Vuyyuru (Head Office) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-warning border-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0 text-dark">📍 Vuyyuru</h4>
+                        <span class="badge bg-warning text-dark fw-bold">MAIN HEAD OFFICE</span>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        Thotlavallaru Road, Sai Baba Temple Back Side, Vuyyuru
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-grid gap-2">
+                            <a href="tel:9014331173" class="btn btn-outline-dark fw-bold">
+                                <i class="bi bi-telephone-fill text-warning me-1"></i> 9014331173
+                            </a>
+                            <a href="https://wa.me/919014331173?text=Inquiry%20for%20Vuyyuru%20Head%20Office" target="_blank" class="btn btn-whatsapp">
+                                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vijayawada Branch -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-primary border-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0 text-dark">📍 Vijayawada</h4>
+                        <span class="badge bg-secondary">BRANCH OFFICE</span>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        Opp. Nagarjuna Hospital, Kanuru, Auto Nagar, Vijayawada
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-grid gap-2">
+                            <a href="tel:9803558899" class="btn btn-outline-dark fw-bold">
+                                <i class="bi bi-telephone-fill text-warning me-1"></i> 9803558899
+                            </a>
+                            <a href="https://wa.me/919803558899?text=Inquiry%20for%20Vijayawada%20Branch" target="_blank" class="btn btn-whatsapp">
+                                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machilipatnam Branch -->
+            <div class="col-lg-4 col-md-12">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 bg-white border-top border-info border-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0 text-dark">📍 Machilipatnam</h4>
+                        <span class="badge bg-secondary">BRANCH OFFICE</span>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        Housing Board Colony, Bypass Road, Machilipatnam
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-grid gap-2">
+                            <a href="tel:8099333910" class="btn btn-outline-dark fw-bold">
+                                <i class="bi bi-telephone-fill text-warning me-1"></i> 8099333910
+                            </a>
+                            <a href="https://wa.me/918099333910?text=Inquiry%20for%20Machilipatnam%20Branch" target="_blank" class="btn btn-whatsapp">
+                                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Booking Callout -->
+        <div class="card bg-dark text-white rounded-4 p-4 p-lg-5 text-center">
+            <h3 class="fw-bold text-warning mb-2">Ready to Schedule Your Shifting?</h3>
+            <p class="text-light mb-4">You can request an instant quote online or speak directly to Mr. Kumar.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="{% url 'quote' %}" class="btn btn-amber btn-lg px-4 fw-bold">
+                    <i class="bi bi-box-seam-fill me-1"></i> Book Shifting Order Online
+                </a>
+                <a href="tel:{{ PRIMARY_PHONE }}" class="btn btn-outline-light btn-lg px-4 fw-bold">
+                    <i class="bi bi-telephone-fill text-warning me-1"></i> Call {{ PRIMARY_PHONE }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
