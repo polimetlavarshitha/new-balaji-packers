@@ -9,7 +9,7 @@ class StaticViewSitemap(Sitemap):
     changefreq = 'weekly'
 
     def items(self):
-        # List of view names defined in packers/urls.py
+        # View names defined in packers/urls.py
         return ['index', 'about', 'contact', 'quote']
 
     def location(self, item):
